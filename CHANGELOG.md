@@ -5,10 +5,10 @@ under `## [<version>]` when the tag `v<version>` is pushed).
 
 ## [Unreleased]
 
-- **A call store: the call list loads at once, however large the archive** (#100). Every finished
-  call is now a row in a database beside the config, so the call list no longer waits for the
-  capture folder to be read.
-  - Paging back through older calls has no limit.
+- **A call store: the call list loads from the store rather than the capture folder** (#100).
+  Every finished call is now a row in a database beside the config, so the call list no longer
+  waits for the capture folder to be read.
+  - Paging back through older calls reaches back to the oldest call the store keeps.
   - Interfaces can ask for calls by system, talkgroup, radio and time (`callsQuery`; `hello`
     lists the `calls` capability).
   - **`store.retentionDays`** sets how long calls are kept in the store: 120 days by default, 0
