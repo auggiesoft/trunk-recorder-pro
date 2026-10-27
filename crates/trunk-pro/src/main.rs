@@ -945,6 +945,10 @@ fn serve(a: &Args) {
         fatal(&format!("web server on {addr}: {e}"));
     }
     runtime::save_registry(&ctx.shared);
+    ctx.db.send(db::Write::Checkpoint);
+    if let Err(e) = ctx.db.flush() {
+        log::warn!("Call store: {e}");
+    }
     log::info!("Cleaning up & Exiting...");
 }
 
