@@ -116,6 +116,8 @@ mod sdr;
 mod server;
 mod spool;
 mod spotlight;
+#[allow(dead_code)] // wired into the recorder by later tasks
+mod db;
 mod statstore;
 mod store;
 mod toolkit;
