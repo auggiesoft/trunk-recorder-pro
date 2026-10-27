@@ -5,6 +5,18 @@ under `## [<version>]` when the tag `v<version>` is pushed).
 
 ## [Unreleased]
 
+- **A call store: the call list loads at once, however large the archive** (#100). Every finished
+  call is now a row in a database beside the config, so the call list no longer waits for the
+  capture folder to be read.
+  - Paging back through older calls has no limit.
+  - Interfaces can ask for calls by system, talkgroup, radio and time (`callsQuery`; `hello`
+    lists the `calls` capability).
+  - **`store.retentionDays`** sets how long calls are kept in the store: 120 days by default, 0
+    keeps everything. It only trims the list; recordings and their JSON are written exactly as
+    before and are never deleted by it.
+  - The first start indexes the calls already in the capture folder in the background; the
+    recorder is usable meanwhile, and later starts only check the last two days.
+
 - **Which sites of a system can be heard here** (from #95, by Bill Johnson). Find my system can look
   for a system you know of instead of sweeping the bands. It listens to just that system's
   frequencies and says, site by site, which it heard: **Heard**, **Another site**,
