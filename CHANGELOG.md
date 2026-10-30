@@ -100,6 +100,9 @@ under `## [<version>]` when the tag `v<version>` is pushed).
   WebSocket (`client.js`: `rec.calls({ … })`), `GET /api/v1/calls`, `/api/v1/calls/<path>` and
   `/api/v1/storage` over HTTP (`docs/api/calls.openapi.yaml`), and for plugins `calls.query`
   (Plugin SDK 0.9.0: `Host::calls`, answered to `Plugin::calls`). One query behind them all.
+- **`client.js`'s `LivePlayer` has a panner.** `new LivePlayer({ pan })` puts the sound left (-1) to
+  right (1), and `setPan(v)` and `setGain(v)` change the position and the volume while playing,
+  so an interface can give each talkgroup its own place in the stereo field.
 
 ## [0.2.11] — 2026-10-27
 
