@@ -103,6 +103,11 @@ under `## [<version>]` when the tag `v<version>` is pushed).
 - **`client.js`'s `LivePlayer` has a panner.** `new LivePlayer({ pan })` puts the sound left (-1) to
   right (1), and `setPan(v)` and `setGain(v)` change the position and the volume while playing,
   so an interface can give each talkgroup its own place in the stereo field.
+- **The frequent events on request.** A connection that subscribes to the topic `activity` gets
+  every grant (`unitActive`), affiliation (`unitAffiliated`), talkgroup heard (`tgActive`) and
+  call-volume reading as `monitorEvent` messages. The feed, the recent events a connection is
+  greeted with, and the dashboard are as they were; the recorder builds these only while someone
+  subscribes. For interfaces that show a unit activity feed.
 
 ## [0.2.11] — 2026-10-27
 
