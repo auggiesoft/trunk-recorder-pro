@@ -102,7 +102,8 @@ under `## [<version>]` when the tag `v<version>` is pushed).
   (Plugin SDK 0.9.0: `Host::calls`, answered to `Plugin::calls`). One query behind them all.
 - **`client.js`'s `LivePlayer` has a panner.** `new LivePlayer({ pan })` puts the sound left (-1) to
   right (1), and `setPan(v)` and `setGain(v)` change the position and the volume while playing,
-  so an interface can give each talkgroup its own place in the stereo field.
+  so an interface can give each talkgroup its own place in the stereo field. Players can share
+  an `AudioContext` (`context`), one per call, to hear several calls at once.
 - **The frequent events on request.** A connection that subscribes to the topic `activity` gets
   every grant (`unitActive`), affiliation (`unitAffiliated`), talkgroup heard (`tgActive`) and
   call-volume reading as `monitorEvent` messages. The feed, the recent events a connection is
